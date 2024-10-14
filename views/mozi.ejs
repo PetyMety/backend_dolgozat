@@ -3,13 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Mozi - Dolgozat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.1/dist/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.1/dist/css/bootstrap-datepicker3.min.css">
 </head>
 <body>
+    <script>
+        $(document).ready(function () {
+            $('#datum').datepicker({
+                startDate: new Date()
+            });
+        });
+    </script>
 
-  <form action="post">
-      
-  </form>
+    <div class="container">
+        <h1>Mozi foglalás</h1>
+        <form action="/mozi" method="post">
+          <div class="form-group">
+            <label for="name">Név:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" class="form-control" min="date" required>
+          </div>
+          <div class="form-group">
+            <label for="datum">Dátum:</label>
+            <input type="date" id="datum" name="datum" class="form-control" required >
+          </div>
+          <div class="form-group">
+            <label for="viewers">Nézők:</label>
+            <input type="number" id="viewers" name="viewers" class="form-control" min="1" max="10" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <% if (error) { %>
+          <div class="alert alert-danger" role="alert">
+            <%= error %>
+          </div>
+        <% } %>
+
+    </div>
+  
   
 </body>
 </html>
