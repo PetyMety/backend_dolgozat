@@ -27,8 +27,17 @@ submitMozi2(@Body(ValidationPipe) moziData: any){
     return {error: 'Kérem töltse ki az összes mezőt!'}
   }
 
-  const emailRegex = /^(?:\d{1}@\d{1})$/;
+  const emailRegex = /^[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}\.[a-zA-Z0-9]{1,}$/;
 
+  if (emailRegex.test(email)) {
+    return {error: 'Hibás email cím formátum!'}
+  }
+
+
+  const viewerregex = /^[1-9]|10$/
+  
+
+  return 'Mozi foglalása sikeresen megtörtént!'
 }
 
 }
